@@ -1,6 +1,6 @@
 # IUST-PhD-Thesis
 
-An Iranian University of Science and Technology's (IUST) master's thesis template in LaTeX
+An Iranian University of Science and Technology's (IUST) PhD's thesis template in LaTeX
 
 <div dir=rtl>
 
