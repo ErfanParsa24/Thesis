@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{framed} 
 \usepackage{lastpage}
-
+\usepackage{imakeidx}
 % \usepackage[pagebackref=false,colorlinks=false,linkcolor=black,citecolor=blue]{hyperref}
 \usepackage[pagebackref=false]{hyperref}
 \hypersetup{
@@ -18,17 +18,18 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{subfigure}
-\usepackage{graphicx}
+% \usepackage{graphicx}
 \usepackage{caption}
 \usepackage[subfigure]{tocloft}
 \usepackage[nottoc]{tocbibind}
-\usepackage{makeidx}
-\makeindex
+% \usepackage{makeidx}
+% \makeindex
+\makeindex[columns=2,options={-s indexstyle.ist}] %load layout
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % فراخوانی بسته زی‌پرشین و تعریف قلم فارسی و انگلیسی
 \usepackage{xepersian}
-\setmainfont[Ligatures=TeX, Path=fonts/, Scale=1.2]{XB Niloofar.ttf}
+\setmainfont[Ligatures=TeX, Path=./fonts/, Scale=1.2]{XB Niloofar.ttf}
 \settextfont[Scale=1.2, Path=fonts/, BoldFont=B Nazanin Bold.ttf]{B Nazanin.ttf}
 \setlatintextfont[Scale=0.8, Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}
 
