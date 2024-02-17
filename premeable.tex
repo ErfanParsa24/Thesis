@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{framed} 
 \usepackage{lastpage}
-
+\usepackage[xindy]{imakeidx}
 % \usepackage[pagebackref=false,colorlinks=false,linkcolor=black,citecolor=blue]{hyperref}
 \usepackage[pagebackref=false]{hyperref}
 \hypersetup{
@@ -12,6 +12,9 @@
   linkcolor    = black, %Colour of internal links
   citecolor   = black %Colour of citations
 }
+% \usepackage[xindy,acronym, nonumberlist]{glossaries}
+\usepackage[xindy,acronym,nonumberlist=true]{glossaries}
+% \usepackage[xindy,,acronym,nonumberlist]{glossaries-extra}
 
 \usepackage{fancyhdr}
 \usepackage{setspace}
@@ -22,15 +25,83 @@
 \usepackage{caption}
 \usepackage[subfigure]{tocloft}
 \usepackage[nottoc]{tocbibind}
-\usepackage{makeidx}
-\makeindex
+% \usepackage{makeidx}
+% \usepackage[xindy]{imakeidx}
+% \makeindex[columns=2,options={-s main.ist}] %load layout
+% \makeindex
+\newglossary[plg]{persian}{pym}{pbl}{واژه نامه}
+\newglossary[elg]{english}{eym}{ebl}{واژه نامه انگلیسی }
 
+% \newglossary{persian}{gls}{glo}{واژه‌نامه‌ی فارسی}
+% \newglossary[persian]{persian}{ldx}{ldn}{واژه‌نامه‌ی فارسی}
+% \newglossary{english}{gls}{glo}{\lr{Glossary}}
+% \newglossary{main}{bls}{glo}{Glossary}
+% \newglossary[edx]{english}{idx}{ind}{English Glossary}
+\makeglossaries
+% \loadglsentries{./pages/Persianglossaries.tex} % Import the glossary entries
+% \loadglsentries{./pages/englishglossary.tex} % Import the glossary entries
+% \newglossaryentry{computer}
+% {
+%     name=کامپیوتر,
+%     description={ابزاری برای پردازش اطلاعات}
+% }
+% Acronyms
+\newglossaryentry{svm}{type=acronym, name={SVM}, description={Support Vector Machine}}
+\newglossaryentry{ann}{type=acronym, name={ANN}, description={Artificial Neural Network}}
+
+\newglossaryentry{رایانه}
+{
+    type=persian,
+    name={رایانه},
+    description={دستگاهی الکترونیکی است که برای پردازش اطلاعات و انجام محاسبات استفاده می‌شود.}
+}
+
+\newglossaryentry{اینترنت}
+{
+    type=persian,
+    name={اینترنت},
+    description={شبکه‌ای از رایانه‌ها و دستگاه‌های مخابراتی است که به یکدیگر متصل شده‌اند و امکان ارتباط و تبادل اطلاعات را برای کاربران فراهم می‌کند.}
+}
+\newglossaryentry{internet}
+{
+    type=main,
+    name={Internet},
+    description={شبکه‌ای از رایانه‌ها و دستگاه‌های مخابراتی است که به یکدیگر متصل شده‌اند و امکان ارتباط و تبادل اطلاعات را برای کاربران فراهم می‌کند.}
+}
+\newglossaryentry{latex}
+{
+    type=english,
+    name={LaTeX},
+    description={A document preparation system}
+}
+\newglossaryentry{glossaries}
+{
+    type=english,
+    name={Glossaries},
+    description={A package for creating glossaries}
+}
+
+
+% \newglossarystyle{persian-block}
+% {
+%   \renewenvironment{theglossary}
+%   {\begin{multicols}{2}\setlength{\parindent}{0pt}}
+%   {\end{multicols}}
+%   \renewcommand*{\glossaryheader}{}
+%   \renewcommand*{\glsgroupheading}[1]{\subsection*{\begin{RTL}##1\end{RTL}}}
+%   \renewcommand*{\glsgroupskip}{}
+%   \renewcommand*{\glossaryentryfield}[5]{\glstarget{##1}{##2} & ##3\glspostdescription\space ##5\\}
+% }
+
+\makeindex[options=-L persian -C utf8, intoc=true,title={\Huge\textbf{فهرست الفبایی}}]
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % فراخوانی بسته زی‌پرشین و تعریف قلم فارسی و انگلیسی
 \usepackage{xepersian}
-\setmainfont[Ligatures=TeX, Path=fonts/, Scale=1.2]{XB Niloofar.ttf}
-\settextfont[Scale=1.2, Path=fonts/, BoldFont=B Nazanin Bold.ttf]{B Nazanin.ttf}
-\setlatintextfont[Scale=0.8, Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}
+\settextfont{XB Niloofar}
+
+% \setmainfont[Ligatures=TeX, Path=fonts/, Scale=1.2]{XB Niloofar.ttf}
+% \settextfont[Scale=1.2, Path=fonts/, BoldFont=B Nazanin Bold.ttf]{B Nazanin.ttf}
+% \setlatintextfont[Scale=0.8, Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % چنانچه می‌خواهید اعداد در فرمول‌ها، انگلیسی باشد، خط زیر را غیرفعال کنید
