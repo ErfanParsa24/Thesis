@@ -72,7 +72,12 @@ acs-*.bib
 *.glg
 *.glo
 *.gls
-
+*.ebl
+*.elg
+*.eym
+*.pbl
+*.plg
+*.pym
 # gnuplottex
 *-gnuplottex-*
 
