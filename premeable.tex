@@ -3,11 +3,12 @@
 \usepackage{graphicx}
 \usepackage{framed} 
 \usepackage{lastpage}
-\usepackage{imakeidx}
+\usepackage[numbers,square,sort&compress]{natbib}
+\usepackage[version=4]{mhchem}
+% \usepackage{imakeidx}
+\usepackage[xindy]{imakeidx}
 \usepackage{pdfpages}
-% \usepackage[version=4]{mhchem}
-\usepackage{chemformula}
-% \usepackage[xindy]{imakeidx}
+
 % \usepackage[pagebackref=false,colorlinks=false,linkcolor=black,citecolor=blue]{hyperref}
 \usepackage[pagebackref=false]{hyperref}
 \hypersetup{
@@ -29,6 +30,9 @@
 \usepackage{caption}
 \usepackage[subfigure]{tocloft}
 \usepackage[nottoc]{tocbibind}
+\usepackage{chemformula}
+
+
 % % \usepackage{makeidx}
 % % \usepackage[xindy]{imakeidx}
 % \makeindex[columns=2,options={-s main.ist}] %load layout
@@ -103,10 +107,10 @@
 % فراخوانی بسته زی‌پرشین و تعریف قلم فارسی و انگلیسی
 \usepackage{xepersian}
 \settextfont{XB Niloofar}
-
+% \settextfont{B Nazanin}
 % \setmainfont[Ligatures=TeX, Path=./fonts/, Scale=1.2]{XB Niloofar.ttf}
 % \settextfont[Scale=1.2, Path=fonts/, BoldFont=B Nazanin Bold.ttf]{B Nazanin.ttf}
-% \setlatintextfont[Scale=0.8, Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}
+\setlatintextfont[Scale=0.8, Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % چنانچه می‌خواهید اعداد در فرمول‌ها، انگلیسی باشد، خط زیر را غیرفعال کنید
