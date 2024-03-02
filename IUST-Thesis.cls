@@ -60,6 +60,8 @@
 \def\en-abstract#1{\gdef\@en-abstract{#1}}
 \def\latinkeywords#1{\gdef\@latinkeywords{#1}}
 \def\latinuniversity#1{\gdef\@latinuniversity{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\headheight}{15.77342pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\if@bscthesis
 \@bscthesisfalse
