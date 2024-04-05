@@ -1,4 +1,5 @@
 name: Compile LaTeX
+run-name: ${{ github.actor }} is compiling texfiles
 on:
   push:
     branches:
