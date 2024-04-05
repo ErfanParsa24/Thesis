@@ -21,7 +21,7 @@
   citecolor   = black %Colour of citations
 }
 % \usepackage[xindy,acronym, nonumberlist]{glossaries}
-\usepackage[xindy,acronym,nonumberlist=true]{glossaries}
+\usepackage[xindy,acronym,nonumberlist=true,toc]{glossaries}
 % \usepackage[xindy,,acronym,nonumberlist]{glossaries-extra}
 
 \usepackage{fancyhdr}
@@ -66,6 +66,19 @@
 %   \renewcommand*{\glsgroupskip}{}
 %   \renewcommand*{\glossaryentryfield}[5]{\glstarget{##1}{##2} & ##3\glspostdescription\space ##5\\}
 % }
+
+% \renewenvironment{theglossary}{%
+% \begin{description}[style=standard,labelindent=0pt,itemsep=5pt]%
+% }%
+% {\end{description}}
+% \renewcommand*{\glossentry}[2]{%
+%   \item[\glsentryitem{##1}%
+%     \glstarget{##1}{\glossentryname{##1}}]%
+%     \mbox{}\par\nobreak\@afterheading
+%     \glossentrydesc{##1}\glspostdescription
+%     {\def\hfill{\hskip 25pt plus 3fill}\dotfill\mbox{\textit{see page} ##2}}%
+% }%
+
 \makeindex[columns=2,options={-s indexstyle.ist}] %load layout
 
 \makeindex[options=-L persian -C utf8, intoc=true,title={\Huge\textbf{فهرست الفبایی}}]
