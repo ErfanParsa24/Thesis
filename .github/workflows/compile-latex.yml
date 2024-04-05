@@ -1,0 +1,27 @@
+name: Compile LaTeX
+on:
+  push:
+    branches:
+      - main
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Install TeX Live
+    uses: teatimeguest/setup-texlive-action@v3
+
+  - name: Compile LaTeX document
+    run: |
+      xelatex main.tex
+      bibtex main
+      xelatex main.tex
+      xelatex main.tex
+
+  - name: Upload PDF
+    uses: actions/upload-artifact@v2
+    with:
+      name: main
+      path: main.pdf
