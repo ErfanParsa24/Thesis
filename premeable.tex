@@ -34,7 +34,7 @@
 \usepackage[subfigure]{tocloft}
 \usepackage[nottoc]{tocbibind}
 \usepackage{chemformula}
-
+\usepackage{zref-perpage}
 
 % % \usepackage{makeidx}
 % % \usepackage[xindy]{imakeidx}
@@ -42,6 +42,7 @@
 % \makeindex
 \newglossary[plg]{persian}{pym}{pbl}{واژه نامه}
 \newglossary[elg]{english}{eym}{ebl}{واژه نامه انگلیسی }
+\newglossary[ilg]{index}{iym}{ibl}{اعلام}
 
 % \newglossary{persian}{gls}{glo}{واژه‌نامه‌ی فارسی}
 % \newglossary[persian]{persian}{ldx}{ldn}{واژه‌نامه‌ی فارسی}
@@ -53,39 +54,68 @@
 \loadglsentries{./pages/englishglossary.tex} % Import the glossary entries
 
 % Acronyms
-\newglossaryentry{svm}{type=acronym, name={SVM}, description={Support Vector Machine}}
-\newglossaryentry{ann}{type=acronym, name={ANN}, description={Artificial Neural Network}}
+\loadglsentries{./pages/acronyms2.tex} % Import the glossary entries
 
-% \newglossarystyle{persian-block}
-% {
-%   \renewenvironment{theglossary}
-%   {\begin{multicols}{2}\setlength{\parindent}{0pt}}
-%   {\end{multicols}}
-%   \renewcommand*{\glossaryheader}{}
-%   \renewcommand*{\glsgroupheading}[1]{\subsection*{\begin{RTL}##1\end{RTL}}}
-%   \renewcommand*{\glsgroupskip}{}
-%   \renewcommand*{\glossaryentryfield}[5]{\glstarget{##1}{##2} & ##3\glspostdescription\space ##5\\}
-% }
+% Indexes
+\loadglsentries{./pages/indexes.tex} % Import the glossary entries
 
-% \renewenvironment{theglossary}{%
-% \begin{description}[style=standard,labelindent=0pt,itemsep=5pt]%
-% }%
-% {\end{description}}
-% \renewcommand*{\glossentry}[2]{%
-%   \item[\glsentryitem{##1}%
-%     \glstarget{##1}{\glossentryname{##1}}]%
-%     \mbox{}\par\nobreak\@afterheading
-%     \glossentrydesc{##1}\glspostdescription
-%     {\def\hfill{\hskip 25pt plus 3fill}\dotfill\mbox{\textit{see page} ##2}}%
-% }%
 
-\makeindex[columns=2,options={-s indexstyle.ist}] %load layout
+
+%% تعریف استایل برای واژه نامه فارسی به انگلیسی،
+\newglossarystyle{myFaToEn}{%
+    \renewenvironment{theglossary}{}{}
+    \renewcommand*{\glsgroupskip}{\vskip 10mm}
+    \renewcommand*{\glsgroupheading}[1]{\subsection*{\glsgetgrouptitle{##1}}}
+    \renewcommand*{\glossentry}[2]{\noindent\glsentryname{##1}\dotfill\space \glsentrytext{##1}
+    }
+}
+
+%% تعریف استایل برای واژه نامه انگلیسی به فارسی،
+\newglossarystyle{myEntoFa}{%
+    \renewenvironment{theglossary}{}{}
+    \renewcommand*{\glsgroupskip}{\vskip 10mm}
+    \renewcommand*{\glsgroupheading}[1]{\begin{LTR} \subsection*{\glsgetgrouptitle{##1}} \end{LTR}}
+    \renewcommand*{\glossentry}[2]{\noindent\glsentrytext{##1}\dotfill\space \glsentryname{##1}
+  
+    }
+}
+%%% تعیین استایل برای فهرست اختصارات
+\newglossarystyle{myAbbrlist}{%
+    \renewenvironment{theglossary}{}{}
+    \renewcommand*{\glsgroupskip}{\vskip 10mm}
+    \renewcommand*{\glsgroupheading}[1]{\begin{LTR} \subsection*{\glsgetgrouptitle{##1}} \end{LTR}}
+    \renewcommand*{\glossentry}[2]{\noindent\Glsentrylong{##1}\dotfill\space \glsentrytext{##1}
+  
+    }
+    \renewcommand*{\acronymname}{فهرست اختصارات}
+}
+
+\newglossarystyle{myIndex}{%
+    \renewenvironment{theglossary}{}{}
+    \renewcommand*{\glsgroupskip}{\vskip 10mm}
+    \renewcommand*{\glsgroupheading}[1]{\begin{LTR} \subsection*{\glsgetgrouptitle{##1}} \end{LTR}}
+    \renewcommand*{\glossentry}[2]{\noindent\glsentrytext{##1}\dotfill\space \glsentryname{##1}
+  
+    }
+}
+%%% بر طبق این دستور، در اولین باری که واژه مورد نظر از واژه‌نامه وارد شود، پاورقی زده می‌شود. 
+\defglsentryfmt[english]{\glsgenentryfmt\ifglsused{\glslabel}{}{\LTRfootnote{\Glsentryname{\glslabel}}}}
+
+%%% بر طبق این دستور، در اولین باری که واژه مورد نظر از واژه‌نامه وارد شود، پاورقی زده می‌شود. 
+\defglsentryfmt[index]{\glsgenentryfmt\ifglsused{\glslabel}{}{\LTRfootnote{\Glsentryname{\glslabel}}}}
+
+%%% بر طبق این دستور، در اولین باری که واژه مورد نظر از فهرست اختصارات وارد شود، پاورقی زده می‌شود. 
+\defglsentryfmt[acronym]{\glsentryname{\glslabel}\ifglsused{\glslabel}{}{\LTRfootnote{\Glsentrylong{\glslabel}}}}
+
+
+% \makeindex[columns=2,options={-s indexstyle.ist}] %load layout
 
 \makeindex[options=-L persian -C utf8, intoc=true,title={\Huge\textbf{فهرست الفبایی}}]
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % فراخوانی بسته زی‌پرشین و تعریف قلم فارسی و انگلیسی
 \usepackage{xepersian}
 \settextfont{XB Niloofar}
+\zmakeperpage{footnote}
 % \settextfont{B Nazanin}
 % \setmainfont[Ligatures=TeX, Path=./fonts/, Scale=1.2]{XB Niloofar.ttf}
 % \settextfont[Scale=1.2, Path=fonts/, BoldFont=B Nazanin Bold.ttf]{B Nazanin.ttf}

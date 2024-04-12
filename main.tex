@@ -3,15 +3,15 @@
 
 \begin{document}
 \tracinggroups=1
-% \pagenumbering{harfi}
+\pagenumbering{harfi}
 \input{pages/faTitle}
 \tableofcontents
 \newpage
 \listoffigures \newpage
 \listoftables \newpage
-\addcontentsline{toc}{chapter}{\listalgorithmname}
+% \addcontentsline{toc}{chapter}{\listalgorithmname}
 \listofalgorithms \newpage
-\input{pages/acronyms}
+% \input{pages/acronyms}
 \pagestyle{fancy}
 
 \include{chapters/1}
@@ -38,11 +38,19 @@
 % \printglossary[title={واژه‌نامه‌ی فارسی}]
 % \printglossary[type=persian, style=persian-block]
 
+% \setglossarystyle{myAbbrlist}
 \printglossary[type=acronym,title={فهرست علایم اختصاری}]
-
+\twocolumn{}
+\setglossarystyle{myEntoFa}
 \printglossary[type=english,title={واژه‌نامه‌ی انگلیسی}]
+
+\setglossarystyle{myFaToEn}
+% \setglossarystyle{mydotfillstyle}
 \printglossary[type=persian,title={واژه‌نامه‌ی فارسی}]
+\setglossarystyle{myIndex}
+\printglossary[type=index,title={اعلام}]
 \printindex
+\onecolumn{}
 \input{pages/enTitle}
 \label{LastPage}
 \end{document}
